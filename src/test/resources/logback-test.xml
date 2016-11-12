@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<logger name="io.gatling.http.ahc" level="TRACE" />
-	<logger name="io.gatling.http.response" level="TRACE" />
 	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
 		<resetJUL>true</resetJUL>
 	</contextListener>
@@ -12,14 +10,23 @@
 			<immediateFlush>false</immediateFlush>
 		</encoder>
 	</appender>
-
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>target/gatling/log/log-${bySecond}.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
 	<!-- Uncomment for logging ALL HTTP request and responses -->
-	<!-- 	<logger name="io.gatling.http" level="TRACE" /> -->
+	<logger name="io.gatling.http" level="TRACE" />
 	<!-- Uncomment for logging ONLY FAILED HTTP request and responses -->
-	<!-- 	<logger name="io.gatling.http" level="DEBUG" /> -->
+	<!--<logger name="io.gatling.http" level="DEBUG" /> -->
 
-	<root level="WARN">
+	<root level="INFO">
 		<appender-ref ref="CONSOLE" />
 	</root>
-
+	<root level="DEBUG">
+		<appender-ref ref="FILE" />
+	</root>
 </configuration>
