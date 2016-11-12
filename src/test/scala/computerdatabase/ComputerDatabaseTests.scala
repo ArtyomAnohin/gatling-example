@@ -22,7 +22,7 @@ class ComputerDatabaseTests extends Simulation {
   object PostNew {
     val browse = exec(http("Get New computer page")
       .get("/computers/new"))
-      .pause(36)
+      .pause(3)
     val edit = feed(feeder)
       .exec(http("Post new computer")
         .post("/computers")
@@ -65,6 +65,6 @@ class ComputerDatabaseTests extends Simulation {
   val users = scenario("Add Delete computer").exec(Home.home, PostNew.browse, PostNew.edit, Delete.delete)
 
   setUp(
-    users.inject(rampUsers(1) over (10 seconds))
+    users.inject(rampUsers(10) over (100 seconds))
   ).protocols(httpConf)
 }
