@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+<!--	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
 		<resetJUL>true</resetJUL>
 	</contextListener>
 
@@ -18,15 +18,12 @@
 			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
 		</encoder>
 	</appender>
-	<!-- Uncomment for logging ALL HTTP request and responses -->
 	<logger name="io.gatling.http" level="TRACE" />
-	<!-- Uncomment for logging ONLY FAILED HTTP request and responses -->
-	<!--<logger name="io.gatling.http" level="DEBUG" /> -->
 
 	<root level="INFO">
 		<appender-ref ref="CONSOLE" />
 	</root>
 	<root level="DEBUG">
 		<appender-ref ref="FILE" />
-	</root>
+	</root> -->
 </configuration>

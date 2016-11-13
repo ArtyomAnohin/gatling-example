@@ -1,4 +1,4 @@
-import computerdatabase.{BasicSimulation, ComputerDatabaseTests}
+import computerdatabase.{ComputerDatabaseTests}
 import io.gatling.app.Gatling
 import io.gatling.core.config.GatlingPropertiesBuilder
 

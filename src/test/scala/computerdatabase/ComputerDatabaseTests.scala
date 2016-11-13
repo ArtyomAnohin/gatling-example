@@ -16,7 +16,7 @@ class ComputerDatabaseTests extends Simulation {
     val home = exec(http("Home")
       .get("/")
       .check(status.is(200)))
-      .pause(1)
+
   }
 
   object PostNew {
@@ -65,6 +65,6 @@ class ComputerDatabaseTests extends Simulation {
   val users = scenario("Add Delete computer").exec(Home.home, PostNew.browse, PostNew.edit, Delete.delete)
 
   setUp(
-    users.inject(rampUsers(10) over (100 seconds))
+    users.inject(constantUsersPerSec(50) during (2 minutes))
   ).protocols(httpConf)
 }
